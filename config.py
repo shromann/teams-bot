@@ -13,7 +13,7 @@ class DefaultConfig:
     PORT = 3978
     APP_ID = os.environ.get("MicrosoftAppId")
     APP_PASSWORD = os.environ.get("MicrosoftAppPassword")
-      
+    
     AGENT_URI = "https://adk-default-service-name-575161739761.us-central1.run.app"
     PROMPT_ENDPOINT = f"{AGENT_URI}/run"
     AGENT_NAME = "agents"
