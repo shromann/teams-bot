@@ -1,0 +1,14 @@
+[project]
+name = "teams-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.12.13",
+    "asyncio>=3.4.3",
+    "botbuilder-core>=4.17.0",
+    "botbuilder-integration-aiohttp>=4.14.0",
+    "dotenv>=0.9.9",
+    "ipykernel>=6.29.5",
+]
