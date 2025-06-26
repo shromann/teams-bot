@@ -4,14 +4,19 @@
 from botbuilder.core import ActivityHandler, TurnContext
 from botbuilder.schema import ChannelAccount
 
+
 from conn import init_sessions, delete_sessions, prompt
 
 class MyBot(ActivityHandler):
     # See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
 
-    id: str
+    id: str = None
 
     async def on_message_activity(self, turn_context: TurnContext):
+        if self.id is None:
+            self.id = turn_context.activity.from_property.name
+            init_sessions(self.id)
+            
         responses = prompt(self.id, turn_context.activity.text)
         await turn_context.send_activity(responses)
 
@@ -24,10 +29,10 @@ class MyBot(ActivityHandler):
             if member_added.id != turn_context.activity.recipient.id:
                 self.id = member_added.id
                 init_sessions(self.id)
-                await turn_context.send_activity(f"Hello {member_added.name} and welcome!")
+                await turn_context.send_activity(f"Hello and welcome!")
 
 
-    async def on_end_of_conversation_activity(  # pylint: disable=unused-argument
+    async def on_end_of_conversation_activity(
         self, turn_context: TurnContext
     ):
         await turn_context.send_activity("Goodbye!")
