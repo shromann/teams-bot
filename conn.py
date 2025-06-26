@@ -80,14 +80,3 @@ def prompt(user_id, message):
     
     
     return reply
-    
-
-if __name__ == "__main__":
-    r = init_sessions("maju-mds9")
-    print(r.json())
-
-    r = prompt("maju-mds9", "Can you plot me the volume forecast for retail in 2023?")
-    print(r)
-    
-    r = delete_sessions("maju-mds9")
-    
