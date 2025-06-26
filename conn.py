@@ -15,8 +15,8 @@ def delete_sessions(user_id):
 
 
 def _handle_func_resp(name, response):
-    if name == "plot_tool" and response['status'] == "success":
-        return response['data_url']
+    if name == "plot_tool" and response.get('status', 'error') == "success":
+        return response.get('data_url')
     
          
 def prompt(user_id, message):
